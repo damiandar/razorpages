@@ -8,6 +8,7 @@ namespace ProyPage1.Servicios
   
         public IEnumerable<Profesor> GetAll();   
         public void Add(Profesor profesor);
-   
+        void Eliminar(Profesor profesor);
+        void Modificar(Profesor profesor);
     }
 }

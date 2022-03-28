@@ -1,5 +1,7 @@
 using ProyPage1.Model;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace ProyPage1.Servicios
 {
@@ -19,6 +21,16 @@ namespace ProyPage1.Servicios
              //mobile.id = _mobileList.Max(e => e.id) + 1;
             //_mobileList.Add(mobile);
             //return mobile;
+            Profesores.Add(profesor);
+        }
+
+        public void Eliminar(Profesor profesor){
+            var profesoranterior=Profesores.Where(x=> x.Legajo==profesor.Legajo).First();
+            Profesores.Remove(profesoranterior); 
+        }
+         public void Modificar(Profesor profesor){
+            var profesoranterior=Profesores.Where(x=> x.Legajo==profesor.Legajo).First();
+            Profesores.Remove(profesoranterior);
             Profesores.Add(profesor);
         }
     }

@@ -3,6 +3,7 @@
 @model ProyPage1.Pages.ProfesorListModel
 @{
 }
+ <h2>Editar</h2>
  <table class="table">
         <thead>
             <tr>
@@ -21,7 +22,7 @@
         <td>@item.Apellido</td>
         <td>@item.Nombre</td>
         <td>
-            <a asp-page="./EditarProfesor" asp-route-id="@item.Legajo">Editar</a> |
+            <a asp-page="./EditarProfesor" asp-route-leg="@item.Legajo">Editar</a> |
         </td>
     </tr> 
 } 
@@ -29,7 +30,7 @@
     </table>
 
  <form method="post">
-    <h2>Formulario 2</h2> 
+    <h2>Agregar</h2> 
     <input type="text" asp-for="@Model.Profesor.Legajo" placeholder="Ingresar Legajo" />
     <input type="text" asp-for="@Model.Profesor.Nombre" placeholder="Ingresar Nombre" />  
     <input type="text" asp-for="@Model.Profesor.Apellido" placeholder="Ingresar Apellido" />
