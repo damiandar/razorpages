@@ -1,9 +1,21 @@
 ﻿@page
 @inject Servicios.IProfesorServicio ProfSrv
+@using Microsoft.AspNetCore.Html
 @model ProyPage1.Pages.ProfesorListModel
 @{
 }
+@functions{
+     void DisplayDate(DateTime dt)
+    {
+        <span class="date">@dt.ToString("dddd, dd MMMM yyyy")</span>
+    }
+}
+@{
+    Func<DateTime, IHtmlContent> DisplayDate2 = @<span class="date">@item.ToString("dddd, dd MMMM yyyy")</span>;
+}
  <h2>Editar</h2>
+ @{ DisplayDate(DateTime.Now); }
+ @DisplayDate2(DateTime.Now) 
  <table class="table">
         <thead>
             <tr>
