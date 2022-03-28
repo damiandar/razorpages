@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProyPage1.Servicios;
 
 namespace ProyPage1
 {
@@ -24,6 +25,17 @@ namespace ProyPage1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            /*
+            services.AddSingleton<Model.Profesor>();
+
+            //registrarse como un servicio Scoped para que cada usuario diferente reciba su propia instancia del servicio durante la duración de su sesión. .
+            //Un Singleton permite compartir la misma instancia de una clase de servicio entre componentes. 
+            //Esto es bueno porque desea asegurarse de que todas sus páginas reciban la misma instancia de la clase de servicio Profesor. 
+            //Esto garantizará que los datos (es decir, Legajo, en este ejemplo) se compartan correctamente entre las páginas a lo largo de la vida útil de la aplicación.
+            services.AddScoped<Model.Profesor>();*/
+
+            services.AddSingleton<IProfesorServicio,ProfesorServicio>();
+            //services.AddScoped<Model.Datos>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

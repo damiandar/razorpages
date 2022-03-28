@@ -1,10 +1,10 @@
 ﻿@page
-@model ProyPage1.ModelProy
+@model ProyPage1.Pages.EditarProfesorModel
+@inject Servicios.IProfesorServicio ProfSrv
 @{
 }
-
-<div>
-       <table class="table">
+<h2>Editar</h2>
+ <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -15,17 +15,16 @@
         </thead>
         <tbody>
 
-    @foreach (var item in Model.Alumnos)
+    @foreach (var item in ProfSrv.GetAll())
 {
     <tr>
-        <td>@item.DNI</td>
+        <td>@item.Legajo</td>
         <td>@item.Apellido</td>
         <td>@item.Nombre</td>
         <td>
-            <a asp-page="./Edit" asp-route-id="@item.DNI">Editar</a> |
+            <a asp-page="./EditarProfesor" asp-route-id="@item.Legajo">Editar</a> |
         </td>
     </tr> 
 } 
         </tbody>
     </table>
-</div>

@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ProyPage1
 {
-    public class Model : PageModel
+    public class ModelProy : PageModel
     {
         [BindProperty]
         public List<Alumno> Alumnos 
         {
             get;set;
         }
-        public  List<Alumno> ListaAlumnos=new List<Alumno>{
+        static public  List<Alumno> ListaAlumnos=new List<Alumno>{
             new Alumno(){DNI=11111111,Nombre="Laura",Apellido="Alonso"},
             new Alumno(){DNI=22222222,Nombre="Marina",Apellido="Lopez"},
             new Alumno(){DNI=33333333,Nombre="Juan",Apellido="Martinez"},

@@ -1,0 +1,37 @@
+﻿@page
+@inject Servicios.IProfesorServicio ProfSrv
+@model ProyPage1.Pages.ProfesorListModel
+@{
+}
+ <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>View</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+    @foreach (var item in ProfSrv.GetAll())
+{
+    <tr>
+        <td>@item.Legajo</td>
+        <td>@item.Apellido</td>
+        <td>@item.Nombre</td>
+        <td>
+            <a asp-page="./EditarProfesor" asp-route-id="@item.Legajo">Editar</a> |
+        </td>
+    </tr> 
+} 
+        </tbody>
+    </table>
+
+ <form method="post">
+    <h2>Formulario 2</h2> 
+    <input type="text" asp-for="@Model.Profesor.Legajo" placeholder="Ingresar Legajo" />
+    <input type="text" asp-for="@Model.Profesor.Nombre" placeholder="Ingresar Nombre" />  
+    <input type="text" asp-for="@Model.Profesor.Apellido" placeholder="Ingresar Apellido" />
+    <input type="submit" value="Enviar" />
+</form>
