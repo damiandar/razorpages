@@ -1,0 +1,31 @@
+﻿@page
+@model ProyPage1.Model
+@{
+}
+
+<div>
+       <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>View</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+    @foreach (var item in Model.Alumnos)
+{
+    <tr>
+        <td>@item.DNI</td>
+        <td>@item.Apellido</td>
+        <td>@item.Nombre</td>
+        <td>
+            <a asp-page="./Edit" asp-route-id="@item.DNI">Editar</a> |
+        </td>
+    </tr> 
+} 
+        </tbody>
+    </table>
+</div>

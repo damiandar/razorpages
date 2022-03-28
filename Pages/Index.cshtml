@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<form method="post">
+    <h1>Formulario</h1>
+    <input type="text" name="param1" placeholder="Ingresar valor" />
+    <input type="submit" value="Enviar" />
+</form>
+
+<form method="post">
+    <h1>Formulario Alumno</h1>
+    <input type="text" name="param1" placeholder="Ingresar valor" />
+    <input type="text" asp-for="@Model.alumno.DNI" placeholder="Ingresar DNI" />
+    <input type="text" asp-for="@Model.alumno.Nombre" placeholder="Ingresar Nombre" />  
+    <input type="text" asp-for="@Model.alumno.Apellido" placeholder="Ingresar Apellido" />
+    <input type="submit" value="Enviar" asp-page-handler="AlumnoFormulario" />
+</form>
