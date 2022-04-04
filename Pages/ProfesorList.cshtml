@@ -13,21 +13,36 @@
 @{
     Func<DateTime, IHtmlContent> DisplayDate2 = @<span class="date">@item.ToString("dddd, dd MMMM yyyy")</span>;
 }
+
+@*
+@foreach (var item in ProfSrv.GetAll())
+{}
+*@
+
  <h2>Editar</h2>
  @{ DisplayDate(DateTime.Now); }
  @DisplayDate2(DateTime.Now) 
  <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>View</th>
+                <th>Legajo</th>
+                <th>
+                    <a asp-page="./ProfesorList" asp-route-sortOrder="OrdenPorApellido">
+                        Apellido
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./ProfesorList" asp-route-sortOrder="OrdenPorNombre">
+                        Nombre
+                    </a>
+                    
+                </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
 
-    @foreach (var item in ProfSrv.GetAll())
+    @foreach (var item in Model.Profesores)
 {
     <tr>
         <td>@item.Legajo</td>

@@ -13,6 +13,7 @@ namespace ProyPage1.Pages
     {
         [BindProperty]
         public Profesor Profesor {get;set;}
+        public List<Profesor> Profesores{get;set;}
 
         private IProfesorServicio _profService;
         
@@ -22,9 +23,17 @@ namespace ProyPage1.Pages
         }
 
 
-        public void OnGet()
+        public void OnGet(string sortOrder)
         {
-     
+            Profesores=_profService.GetAll().ToList();
+            var valor=sortOrder;
+            if(valor=="OrdenPorApellido"){
+                Profesores=Profesores.OrderBy(x=> x.Apellido).ToList();
+            }
+            else if(valor=="OrdenPorNombre"){
+                Profesores=Profesores.OrderBy(x=> x.Nombre).ToList();
+            }
+
         }
 
         public void OnPost(){
