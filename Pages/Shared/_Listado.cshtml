@@ -1,0 +1,22 @@
+@model List<ProyPage1.Model.Profesor>
+<h3>Vista parcial</h3>
+
+<table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+  @foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Legajo</td>
+        <td>@item.Apellido</td>
+        <td>@item.Nombre</td>
+        <td>
+            <a asp-page="./EditarProfesor" asp-route-leg="@item.Legajo">Editar</a> |
+        </td>
+    </tr> 
+} 
+</table>
