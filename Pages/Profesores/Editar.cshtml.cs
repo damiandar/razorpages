@@ -4,13 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ProyPage1.Model;
+using ProyPage1.Servicios;
 
 namespace ProyPage1.Pages.Profesores
 {
     public class EditarModel : PageModel
     {
-        public void OnGet()
-        {
+        private IProfesorServicio _profService;
+
+        public EditarModel(IProfesorServicio profServicio){
+            _profService=profServicio;
         }
+    
+        [BindProperty]
+        public Profesor ProfesorEditar {get;set;}
+        public void OnGet(int leg)
+        {
+            ProfesorEditar=_profService.GetAll().Where(x=>x.Legajo==leg).First();
+        }
+
+        public IActionResult OnPost(){
+           _profService.Modificar(ProfesorEditar);
+           return RedirectToPage("ProfesorList");
+       }
     }
 }

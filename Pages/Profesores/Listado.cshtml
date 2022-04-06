@@ -2,6 +2,7 @@
 @model ProyPage1.Pages.Profesores.ListadoModel
 @{
 }
+ <a asp-page="Nuevo" class="btn btn-default">Nuevo</a>
  <table class="table">
         <thead>
             <tr>
@@ -29,7 +30,7 @@
         <td>@item.Apellido</td>
         <td>@item.Nombre</td>
         <td>
-            <a asp-page="./EditarProfesor" asp-route-leg="@item.Legajo">Editar</a> | 
+            <a asp-page="./Editar" asp-route-leg="@item.Legajo">Editar</a> | 
             <a asp-page="Listado"  onclick="return confirm('Are you sure you want to delete this?')" asp-page-handler="delete" asp-route-legajoborrar="@item.Legajo">Borrar con A</a>
         </td>
     </tr> 

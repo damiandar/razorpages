@@ -52,5 +52,5 @@
         </div> 
     </div>
     <input type="submit" value="Enviar" />
-    <input type="button" value="Cancelar" asp-page="Listado" />
+    <a asp-page="Listado" class="btn"  onclick="return confirm('Are you sure you want to delete this?')" >Cancelar</a>
 </form>
