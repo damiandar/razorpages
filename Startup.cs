@@ -35,6 +35,7 @@ namespace ProyPage1
             services.AddScoped<Model.Profesor>();*/
 
             services.AddSingleton<IProfesorServicio,ProfesorServicio>();
+            services.AddSingleton<IMateriaServicio,MateriaServicio>();
             //services.AddScoped<Model.Datos>();
         }
 
