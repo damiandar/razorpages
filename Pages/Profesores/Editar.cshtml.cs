@@ -11,22 +11,23 @@ namespace ProyPage1.Pages.Profesores
 {
     public class EditarModel : PageModel
     {
-        private IProfesorServicio _profService;
+        private IProfesorServicio _profService; 
 
         public EditarModel(IProfesorServicio profServicio){
             _profService=profServicio;
         }
     
         [BindProperty]
-        public Profesor ProfesorEditar {get;set;}
+        public Profesor profesor {get;set;}
         public void OnGet(int leg)
         {
-            ProfesorEditar=_profService.GetAll().Where(x=>x.Legajo==leg).First();
+            profesor=_profService.GetAll().Where(x=>x.Legajo==leg).First();
         }
 
-        public IActionResult OnPost(){
-           _profService.Modificar(ProfesorEditar);
-           return RedirectToPage("ProfesorList");
+        public void OnPost(  ){
+           //_profService.Modificar(ProfesorEditar);
+           var profe2=profesor;
+           //return RedirectToPage("Listado");
        }
     }
 }

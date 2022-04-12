@@ -24,8 +24,8 @@ namespace ProyPage1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            /*
+            
+            /*services.AddRazorPages();
             services.AddSingleton<Model.Profesor>();
 
             //registrarse como un servicio Scoped para que cada usuario diferente reciba su propia instancia del servicio durante la duración de su sesión. .
@@ -37,6 +37,20 @@ namespace ProyPage1
             services.AddSingleton<IProfesorServicio,ProfesorServicio>();
             services.AddSingleton<IMateriaServicio,MateriaServicio>();
             //services.AddScoped<Model.Datos>();
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    //Use the below line to change the default directory
+                    //for your Razor Pages.
+                    //
+                    //options.RootDirectory = "/Profesores";
+                
+                    //Use the below line to change the default
+                    //"landing page" of the application.
+                    //options.Conventions.AddPageRoute("/Profesores/Listado", "");
+                    options.Conventions.AddPageRoute("/About","acerca-de");
+            });
+            services.AddAntiforgery(options => options.HeaderName = "MY-XSRF-TOKEN");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +67,7 @@ namespace ProyPage1
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

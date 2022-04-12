@@ -5,7 +5,7 @@ namespace ProyPage1.Model{
     public class Profesor{
 
         [Required]
-        [Range(111111, 999999)]
+        [Range(1111111, 9999999)]
         public int Legajo{get;set;}
         [Required,MaxLength(20)]
         public string Nombre {get;set;}
