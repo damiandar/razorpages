@@ -17,6 +17,8 @@ namespace ProyPage1.Model{
         public DateTime FechaNacimiento {get;set;}
         [Range(1,3)]
         public int EstudioTipo {get;set;}
+        public Materia MateriaDictada {get;set;}
+        public int MateriaDictada_Id {get;set;}
 
         /*
         [Required, MinLength(6)]

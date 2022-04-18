@@ -24,10 +24,10 @@ namespace ProyPage1.Pages.Profesores
             profesor=_profService.GetAll().Where(x=>x.Legajo==leg).First();
         }
 
-        public void OnPost(  ){
-           //_profService.Modificar(ProfesorEditar);
-           var profe2=profesor;
-           //return RedirectToPage("Listado");
+        public IActionResult OnPost(  ){
+           _profService.Modificar(profesor);
+           //var profe2=profesor;
+           return RedirectToPage("Listado");
        }
     }
 }

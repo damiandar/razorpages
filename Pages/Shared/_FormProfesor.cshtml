@@ -1,0 +1,59 @@
+﻿@model ProyPage1.Model.Profesor
+@{
+ 
+}
+
+@if( @Model==null || @Model.Legajo==0){
+    <h2>Ingresar Nuevo Profesor</h2>
+}
+else{
+    <h2>Modificar profesor legajo : <span>@Model.Legajo</span> </h2>
+}
+<form method="post">
+  
+    <div class="form-group" style="@(@Model == null ? "display:none" : "display:block" )">
+        <input type="text" asp-for="@Model.Legajo" placeholder="Ingresar Legajo" />
+        <span asp-validation-for="Legajo"  class="badge badge-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="text" asp-for="@Model.Nombre" placeholder="Ingresar Nombre" /> 
+        <span asp-validation-for="Nombre"  class="badge badge-danger"></span> 
+    </div>
+    <div class="form-group">
+        <input type="text" asp-for="@Model.Apellido" placeholder="Ingresar Apellido" />
+        <span asp-validation-for="Apellido"  class="badge badge-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="EstudioTipo"  value="1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Default radio
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="EstudioTipo"  value="2">
+            <label class="form-check-label" for="exampleRadios2">
+                Second default radio
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="EstudioTipo"  value="3" >
+            <label class="form-check-label" for="exampleRadios3">
+                Disabled radio
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="date" asp-for="FechaNacimiento" placeholder="Ingresar Fecha" />
+        <span asp-validation-for="FechaNacimiento"  class="badge badge-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" asp-for="Activo"  />
+            <label class="form-check-label" for="defaultCheck1">
+                ¿Activo?
+            </label>
+        </div> 
+    </div>
+    <input type="submit"  value="Enviar" />
+</form>

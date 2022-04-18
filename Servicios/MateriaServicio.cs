@@ -12,9 +12,9 @@ namespace ProyPage1.Servicios
         public MateriaServicio(){
           Materias=new List<Materia>(){
                 new Materia(){ Id=1,Descripcion="POO"},
-                new Materia(){ Id=1,Descripcion="POO"},
-                new Materia(){ Id=1,Descripcion="POO"},
-                new Materia(){ Id=1,Descripcion="POO"},
+                new Materia(){ Id=2,Descripcion="WEB"},
+                new Materia(){ Id=3,Descripcion="Herramientas"},
+                new Materia(){ Id=4,Descripcion="BD"},
             };
         }
         public IEnumerable<Materia> GetAll(){
