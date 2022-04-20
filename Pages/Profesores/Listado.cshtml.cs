@@ -28,5 +28,9 @@ namespace ProyPage1.Pages.Profesores
             _profServicio.Eliminar(ProfesorBuscado);
             Profesores=_profServicio.GetAll().ToList();
         }
+
+        public void OnPostFiltrar(int LegajoFiltro){
+            Profesores=_profServicio.GetAll().Where(x=>x.Legajo==LegajoFiltro).ToList();
+        }
     }
 }
