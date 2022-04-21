@@ -14,6 +14,15 @@
             background-attachment: fixed;
             background-size: 100% 100%;}
     </style>
+    <script>
+        $(document).ready(function(){
+            $('.custom-file-input').on("change",function(){
+                console.log("cambio imagen");
+                var nombreArchivo=$(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(nombreArchivo);
+            });
+        });
+    </script>
 </head>
 <body>
     <header>

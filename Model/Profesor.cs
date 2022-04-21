@@ -1,5 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 
 namespace ProyPage1.Model{
     public class Profesor{
@@ -20,6 +22,9 @@ namespace ProyPage1.Model{
         public Materia MateriaDictada {get;set;}
         public int MateriaDictada_Id {get;set;}
 
+        public string FotoRuta {get;set;}
+        [NotMapped()]
+        public IFormFile Foto {get;set;}
         /*
         [Required, MinLength(6)]
         public string Password { get; set; }
