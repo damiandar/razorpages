@@ -38,7 +38,7 @@ namespace ProyPage1.Pages.Profesores
         }
 
         public IActionResult OnPost(  ){
-             if(profesor.Foto!=null){
+            if(profesor.Foto!=null){
                 string carpetaFotos=Path.Combine(_hostingEnvironment.WebRootPath,"images");
                 string nombreArchivo=profesor.Foto.FileName;
                 string rutaCompleta=Path.Combine(carpetaFotos,nombreArchivo);
