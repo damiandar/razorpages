@@ -1,16 +1,5 @@
 ﻿@model ProyPage1.Model.Profesor
 
-@section scripts{
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.custom-file-input').on("change",function(){
-                var nombreArchivo=$(this).val().split("\\").pop();
-                $(this).next('.custom-file-label').html(nombreArchivo);
-            });
-        });
-    </script>
-}
-
 @{
  var materiascombo= ViewData["Materias"];
 }
