@@ -63,9 +63,11 @@ else{
     <div class="form-group">
         <div class="form-check">
         @Html.DropDownList("MateriaDictada_Id", (IEnumerable <SelectListItem>)ViewData["Materias"])  
+        @*
         <select asp-for="MateriaDictada_Id" asp-items="@(new SelectList((IEnumerable<ProyPage1.Model.Materia>)ViewData["MateriasDirecto"], "Id", "Descripcion"))">
-        <option>Please select one</option>
-    </select>
+            <option>Seleccionar una materia</option>
+        </select>
+        *@
         </div>
     </div>
     <input type="submit"  value="Enviar" />
