@@ -85,6 +85,19 @@ En razor:
 ## Funciones
 ```html
 @functions{
+
+
+    async System.Threading.Tasks.Task MostrarImagen(string rutafoto) {
+        if (String.IsNullOrEmpty(rutafoto))
+        {
+                <img src="~/images/icono-persona.png" class="rounded-circle" style="width:75px;height:75px;" />
+        }
+        else { 
+                <img src="@Url.Content("~/images/"+ rutafoto)"  class="rounded-circle" style="width:75px;height:75px;" />
+        }
+
+    }
+
     void MostrarActivo(bool activo){
         if(activo){
             <span>SI</span>;
