@@ -84,6 +84,8 @@ En razor:
 ```
 ## Funciones
 ```html
+    @{await MostrarImagen(item.MatrizId.ToString());}
+
 @functions{
 
 
