@@ -35,6 +35,21 @@ OnPost(string valor1){
 }
 ```
 
+### Request Form
+``` html
+<form method="post">
+    <input type="email" name="emailaddress"> 
+    <input type="submit">
+</form>
+```
+Puede acceder al valor en el OnPostmétodo del controlador de la siguiente manera:
+``` html
+public void OnPost()
+{
+    var emailAddress = Request.Form["emailaddress"];
+    // do something with emailAddress
+}
+```
 ### si queremos pasar un objeto, en mvc hariamos
 
 ```
