@@ -71,6 +71,19 @@ Podemos tener varios OnPost() dentro del mismo modelo, por ejemplo OnPostAlumnoF
 <input name="valor1" type="text"/>
 <input type="submit"  asp-page-handler="AlumnoFormulario" />
 ```
+### Tag Helper
+Los elementos form, input y son objetivos de los asistentes de selectetiquetas , componentes que amplían el elemento HTML para proporcionar atributos personalizados que se utilizan para controlar la generación de HTML.textarea
+
+El atributo más importante es el atributo <b>asp-for</b> que toma el nombre de una propiedad de PageModel. Esto da como resultado que se genere el atributo bane correcto para que los valores del formulario se vinculen correctamente al modelo cuando el formulario se devuelva al servidor.
+
+Etiquete de la siguiente manera:
+```html
+<input asp-for="EmailAddress" />
+```
+El HTML resultante es el siguiente:
+```html
+<input type="text" id="EmailAddress" name="EmailAddress" value="" />
+```
 
 ## Binding
 
