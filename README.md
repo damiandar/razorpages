@@ -10,6 +10,22 @@ dotnet new page -n Listado -o Pages/Profesores
 
 dotnet new page -n _FormProfesor -o ./Pages/Shared
 
+## Sintaxis RAZOR
+```html
+<!-- Single statement block -->
+@{ var myMessage = "Hello World"; }
+
+<!-- Inline expression or variable -->
+<p>The value of myMessage is: @myMessage</p>
+
+<!-- Multi-statement block -->
+@{
+var greeting = "Welcome to our site!";
+var weekDay = DateTime.Now.DayOfWeek;
+var greetingMessage = greeting + " Here in Huston it is: " + weekDay;
+}
+<p>The greeting is: @greetingMessage</p>
+```
 ## MVVM
 
 No tenemos una carpeta llamada controllers, cada vista tiene una clase C# para procesar las peticiones http.
