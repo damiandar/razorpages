@@ -10,6 +10,19 @@ dotnet new page -n Listado -o Pages/Profesores
 
 dotnet new page -n _FormProfesor -o ./Pages/Shared
 
+## Seguridad Identity
+
+dotnet-aspnet-codegenerator identity --dbContext AppDbContext --files "Account.Login;Account.Logout;Account.Register"
+
+   > Microsoft.AspNetCore.Identity.EntityFrameworkCore      
+   > Microsoft.AspNetCore.Identity.UI                   
+   > Microsoft.EntityFrameworkCore.Design                  
+   > Microsoft.EntityFrameworkCore.SqlServer               
+   > Microsoft.EntityFrameworkCore.Tools                     
+   > Microsoft.VisualStudio.Web.CodeGeneration.Design       
+
+Si ejecuta el scaffolder de identidad sin especificar el indicador --files o el flag --useDefaultUI, todas las páginas de IU de identidad disponibles se crearán en su proyecto.
+
 ## Sintaxis RAZOR
 ```html
 <!-- Single statement block -->
