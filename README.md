@@ -152,7 +152,7 @@ Cuando el asp-for detecta que la bind property es string el type del input lo co
 | Byte	| type="number"| 
 | Int	| type="number"| 
 | Single, Double	| type="number"| 
-|IFormFile	| file|
+|IFormFile	| type="file"|
 
 Si queremos customizar un poco el control debemos usar data annotations, por ej el para crear un tag de tipo password.
 
