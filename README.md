@@ -63,8 +63,16 @@ OnPost(string valor1){
 
 }
 ```
+## Forms
+
+Hay varias formas de utilizar formularios.
+- Request Form
+- Pasar por parametros
+- Model Binding (Enlace de modelos)
 
 ### Request Form
+
+En este enfoque tenemos los input html con un type determinado (text,number, etc) y cada uno de ellos tiene un <b>name</b>. Cuando hacemos el post recibimos la colección de elementos en Request.Form.
 ``` html
 <form method="post">
     <input type="email" name="emailaddress"> 
@@ -78,14 +86,38 @@ public void OnPost()
     var emailAddress = Request.Form["emailaddress"];
     // do something with emailAddress
 }
-```
-### si queremos pasar un objeto, en mvc hariamos
 
+### Pasar por parametros
+
+Podemos pasar a un método onpost los distintos names de los controles. La limitación que tenemos es que el enlace se hace solo en el método onpost. Si nosotros queremos acceder a esos parametros los deberemos cargar en el nuevo método.
+
+``` html
+OnPost(int id, string clave)
 ```
+### Binding properties
+
+Podemos crear las distintas propiedades y utilizamos el atributo [BindProperty]. Si no queremos poner en cada prop un atributo, arriba de una clase podemos poner [BindProperties] 
+
+``` html
+[BindProperty]
+public int id {get;set;}
+[BindProperty]
+public string clave {get;set;}
+``` 
+Esto nos permite hacer referencia a los names del formulario en cualquier parte y no hace falta pasarlo por parametros.
+``` html
+OnPost(){
+ var numero=id;
+ var pass=clave;
+}
+``` 
+
+Si queremos pasar un objeto, en mvc hariamos
+``` html
 OnPost(Persona persona)
 ```
 En razor pages no es necesario, tenemos que crear el metodo
-
+ 
 ```
 OnPost( )
 
@@ -93,17 +125,10 @@ OnPost( )
 public Persona Persona {get;set;}
 ```
 
-
-Podemos tener varios OnPost() dentro del mismo modelo, por ejemplo OnPostAlumnoFormulario()
-
-```html
-<input name="valor1" type="text"/>
-<input type="submit"  asp-page-handler="AlumnoFormulario" />
-```
 ### Tag Helper
 Los elementos form, input y son objetivos de los asistentes de selectetiquetas , componentes que amplían el elemento HTML para proporcionar atributos personalizados que se utilizan para controlar la generación de HTML.textarea
 
-El atributo más importante es el atributo <b>asp-for</b> que toma el nombre de una propiedad de PageModel. Esto da como resultado que se genere el atributo bane correcto para que los valores del formulario se vinculen correctamente al modelo cuando el formulario se devuelva al servidor.
+El atributo más importante es el atributo <b>asp-for</b> que toma el nombre de una propiedad de PageModel. Esto da como resultado que se genere el atributo correcto para que los valores del formulario se vinculen correctamente al modelo cuando el formulario se devuelva al servidor.
 
 Etiquete de la siguiente manera:
 ```html
@@ -112,6 +137,40 @@ Etiquete de la siguiente manera:
 El HTML resultante es el siguiente:
 ```html
 <input type="text" id="EmailAddress" name="EmailAddress" value="" />
+```
+
+Cambiamos los controles html comunes con *name* por los asp-for
+
+Cuando el asp-for detecta que la bind property es string el type del input lo convierte en text. Si detecta que es un int lo convierte en type="number"
+
+| .NET type | Input Type |
+| --- | --- |
+| Bool	| type="checkbox"| 
+| String	| type="text"| 
+| DateTime | 	type="datetime-local"| 
+| Byte	| type="number"| 
+| Int	| type="number"| 
+| Single, Double	| type="number"| 
+
+Si queremos customizar un poco el control debemos usar data annotations, por ej el para crear un tag de tipo password.
+
+| .NET type | Input Type |
+| --- | --- | 
+|[EmailAddress] |	type="email"|
+|[Url] |	type="url"|
+|[HiddenInput] |	type="hidden"|
+|[Phone] |	type="tel"|
+|[DataType(DataType.Password)] |	type="password"|
+|[DataType(DataType.Date)] |	type="date"|
+|[DataType(DataType.Time)] |	type="time"|
+
+## Handlers
+
+Podemos tener varios OnPost() dentro del mismo modelo, por ejemplo OnPostAlumnoFormulario()
+
+```html
+<input name="valor1" type="text"/>
+<input type="submit"  asp-page-handler="AlumnoFormulario" />
 ```
 
 ## Binding
@@ -276,7 +335,7 @@ public OnGet(string sortOrder)
 
 dotnet ef migrations script --output "script.sql" --context AppDbContext
 
-## Tag Helpers
+
 
 ## Inyeccion de dependencias
 
