@@ -79,17 +79,18 @@ En este enfoque tenemos los input html con un type determinado (text,number, etc
     <input type="submit">
 </form>
 ```
-Puede acceder al valor en el OnPostmétodo del controlador de la siguiente manera:
+Puede acceder al valor en el método OnPost del controlador de la siguiente manera:
 ``` html
 public void OnPost()
 {
     var emailAddress = Request.Form["emailaddress"];
     // do something with emailAddress
 }
-
+``` 
 ### Pasar por parametros
 
-Podemos pasar a un método onpost los distintos names de los controles. La limitación que tenemos es que el enlace se hace solo en el método onpost. Si nosotros queremos acceder a esos parametros los deberemos cargar en el nuevo método.
+Podemos pasar a un método onpost los distintos names de los controles. La limitación que tenemos es que el enlace se hace solo en el método onpost. 
+Si queremos acceder a esos parametros los deberemos cargar en el nuevo método.
 
 ``` html
 OnPost(int id, string clave)
