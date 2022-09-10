@@ -31,16 +31,16 @@ dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 5
 ```html
 dotnet-aspnet-codegenerator identity --dbContext AppDbContext --files "Account.Login;Account.Logout;Account.Register"
 ```
-Si ejecuta el scaffolder de identidad sin especificar el indicador --files o el flag --useDefaultUI, todas las páginas de IU de identidad disponibles se crearán en su proyecto.
+Si ejecuta el scaffolder de identidad sin especificar el indicador --files o el flag --useDefaultUI (-udui), todas las páginas de IU de identidad disponibles se crearán en su proyecto. Se puede abreviar --dbContext con -dc (Y puedo apuntarlo a mi context creado anteriormente).
 ### Paso 1
 ```html
 dotnet-aspnet-codegenerator identity --files "Account.Login;Account.Logout;Account.Register"
 ```
-1- Nos crea la carpeta Areas/Identity.
-2- Dentro de esa carpeta tenemos las Pages.
-3- Tambien nos crea un archivo IdentityHostingStartup.cs una especie de archivo startup apuntando a un *connection string* y a un *context*.
-4- Un context en la carpeta data.
-5- En el archivo appsetting agrega un connection string.
+1. Nos crea la carpeta Areas/Identity.
+2. Dentro de esa carpeta tenemos las Pages.
+3. Tambien nos crea un archivo IdentityHostingStartup.cs una especie de archivo startup apuntando a un **connection string** y a un **context**.
+4. Un context en la carpeta data.
+5. En el archivo appsetting agrega un connection string.
 
 ### Paso 2
 
@@ -57,6 +57,59 @@ Cambiar las configuraciones: En el startup de identity cambio el conection strin
 dotnet ef database update --context IdentityDbContext
 ```
 Luego vamos al sql y vemos las tablas creadas.
+
+### Paso 4
+
+Voy a startup y agrego
+```html
+app.UseAuthentication();
+```
+
+### Paso 5
+
+Poner en el layout.cshtml un partial que llame a _LoginPartial (se creo cuando hice el code generator).
+
+```html
+<partial name="_LoginPartial" />
+```
+Utilizar identity en las páginas para mostrar o ocultar botones, etc.
+
+```html
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+
+@UserManager.GetUserName(User)
+
+```
+
+> Bloquear el acceso a paginas si no estoy logeado.
+```html
+services.AddRazorPages(o=> { o.Conventions.AuthorizePage("Index"); });
+```
+
+> Bloquear el acceso a carpetas si no estoy logeado.
+```html
+services.AddRazorPages(o=> { o.Conventions.AuthorizeFolder("/Profesores"); });
+```
+
+> Permitir el acceso anonimo a cierta página (antes bloqueda por AuthorizeFolder.
+```html
+services.AddRazorPages(o=> { o.Conventions.AllowAnonymousToPage("/Profesores/Listado"); });
+```
+
+> Permitir el acceso anonimo a cierta carpeta (antes bloqueda por AuthorizeFolder.
+```html
+services.AddRazorPages(o=> { o.Conventions.AllowAnonymousToFolder("/Profesores/Presenciales"); });
+```
+
+> Combinar 
+```html
+services.AddRazorPages(o=> { o.Conventions.AuthorizeFolder("/Profesores").AllowAnonymousToPage("/Profesores/Listado").AllowAnonymousToPage("/Profesores/Nuevo"); });
+```
 
 ## Sintaxis RAZOR
 ```html
