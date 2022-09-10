@@ -1,5 +1,11 @@
 ﻿# razorpages
 
+### CLI
+
+dotnet tool list
+
+dotnet list package
+
 ### Comandos
 
 dotnet new webapp -o ProyRazorPages --no-https
@@ -13,6 +19,7 @@ dotnet new page -n _FormProfesor -o ./Pages/Shared
 ## Seguridad Identity
 
 dotnet add package Microsoft.AspNetCore.Identity.UI --version 5.0.12
+
 dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 5.0.13
 
    > Microsoft.AspNetCore.Identity.EntityFrameworkCore      
@@ -21,10 +28,35 @@ dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 5
    > Microsoft.EntityFrameworkCore.SqlServer               
    > Microsoft.EntityFrameworkCore.Tools                     
    > Microsoft.VisualStudio.Web.CodeGeneration.Design  
-
+```html
 dotnet-aspnet-codegenerator identity --dbContext AppDbContext --files "Account.Login;Account.Logout;Account.Register"
-
+```
 Si ejecuta el scaffolder de identidad sin especificar el indicador --files o el flag --useDefaultUI, todas las páginas de IU de identidad disponibles se crearán en su proyecto.
+### Paso 1
+```html
+dotnet-aspnet-codegenerator identity --files "Account.Login;Account.Logout;Account.Register"
+```
+1- Nos crea la carpeta Areas/Identity.
+2- Dentro de esa carpeta tenemos las Pages.
+3- Tambien nos crea un archivo IdentityHostingStartup.cs una especie de archivo startup apuntando a un *connection string* y a un *context*.
+4- Un context en la carpeta data.
+5- En el archivo appsetting agrega un connection string.
+
+### Paso 2
+
+Ejecuto la migración:
+```html
+dotnet ef migrations add CualquierNombre --context IdentityDbContext (nmbre del context creado en la carpeta data).
+``` 
+Dentro de la carpeta migrations crea un carpeta identitydb (Nombre del context) con las tablas a crear.
+
+### Paso 3
+
+Cambiar las configuraciones: En el startup de identity cambio el conection string por el que estaba usando en mi app. (voy y me fijo en el settings)
+```html
+dotnet ef database update --context IdentityDbContext
+```
+Luego vamos al sql y vemos las tablas creadas.
 
 ## Sintaxis RAZOR
 ```html
