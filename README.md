@@ -13,6 +13,7 @@ dotnet new page -n _FormProfesor -o ./Pages/Shared
 ## Seguridad Identity
 
 dotnet add package Microsoft.AspNetCore.Identity.UI --version 5.0.12
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 5.0.13
 
    > Microsoft.AspNetCore.Identity.EntityFrameworkCore      
    > Microsoft.AspNetCore.Identity.UI                   
