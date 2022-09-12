@@ -491,4 +491,10 @@ https://docs.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-6.0&ta
 
 https://www.mikesdotnetting.com/article/308/razor-pages-understanding-handler-methods
 
+https://www.aspsnippets.com/Articles/Using-jQuery-AJAX-in-ASPNet-Core-Razor-Pages.aspx
+
+https://www.aspsnippets.com/Articles/ASPNet-Core-Razor-Pages-Load-Partial-View-using-jQuery-AJAX.aspx
+
+https://www.mikesdotnetting.com/article/349/razor-pages-and-bootstrap-modal-master-details
+
 
